@@ -2,25 +2,29 @@
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
-    <script type="text/javascript" src="lib/d3.min.js"></script>
-    <script type="text/javascript" src="lib/angular.min.js"></script>
-    <script type="text/javascript" src="lib/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="jquery-2.2.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body ng-controller="MainController">
-<h1>My Github Activity</h1>
-<p class="hover-text" id="hover-text" ng-show="showCursorText && hoverText">
-    {{selectedDataset.name}}: {{ hoverText }}
+<h1>Git Activity</h1>
+
+<p id="hover-text" class="hover-text" ng-show="showCursorText && hoverText" ng-bind-html="hoverText">
 </p>
-<select ng-model="selectedDataset" class="dataset-selector" ng-change="drawChart()"
-        ng-options="dataset.name for dataset in datasets">
-</select>
-<div class="flex-row">
-    <div id="chart"></div>
+
+<div class="flex-row top-bar">
+    <select ng-model="selectedDataset" class="dataset-selector" ng-change="drawChart()"
+            ng-options="dataset.name for dataset in datasets">
+    </select>
+    <label class="showValuesToggle">
+        Show Values: <input type="checkbox" ng-model="showValuesOnHeatMap" ng-change="toggleTextVisibility()">
+    </label>
 </div>
 
+<div id="chart"></div>
 <p>Inspired by <a target="_blank" href="http://bl.ocks.org/tjdecke/5558084">Day/Hour Heatmap</a></p>
 </body>
 </html>
-

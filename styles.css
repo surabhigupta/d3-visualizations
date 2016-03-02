@@ -30,6 +30,8 @@ text.axis-workweek, text.axis-worktime {
 .flex-row {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 select.dataset-selector {
@@ -46,9 +48,31 @@ select.dataset-selector {
     background-color: rgba(0,0,0,0.8);
     color: rgb(250, 248, 243);
     padding: 5px 7px 7px 7px;
+    font-size:11px;
     z-index:100;
 }
 
 svg text {
     pointer-events: none;
+}
+
+.showValuesToggle {
+    font-size: 15px;
+}
+
+.top-bar {
+    width: 415px;
+}
+
+input[type=checkbox] {
+    transform: translateY(-3px) scale(1.5);
+}
+
+rect.legend {
+    stroke-width: 1px;
+    stroke: black;
+}
+
+svg rect {
+    fill: #edf8b1;
 }
